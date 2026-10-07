@@ -21,5 +21,21 @@ def criar_tarefa():
 
 
 def listar_tarefas():
+
     for item in tarefas:
-        print(f'{item["id"]} | {item["titulo"]} | Categoria: {item["categoria"]}')
+        if item["concluida"]:
+            status = "[✓]"
+        else:
+            status = "[ ]"
+        print(f'{status} {item["id"]} - {item["titulo"]} ({item["categoria"]})')
+
+
+def concluir_tarefa():
+    id_tarefa = int(input("Digite o ID da tarefa que deseja concluir: "))
+
+    for item in tarefas:
+        if item["id"] == id_tarefa:
+            item["concluida"] = True
+            print("Tarefa concluída com sucesso!")
+
+        

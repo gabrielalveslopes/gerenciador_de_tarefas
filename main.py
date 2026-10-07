@@ -1,4 +1,4 @@
-from tarefas import criar_tarefa,listar_tarefas
+from tarefas import criar_tarefa,listar_tarefas,concluir_tarefa
 
 def menu():
     print("\n=== DEV TASK CLI ===")
@@ -21,7 +21,7 @@ while True:
         listar_tarefas()
 
     elif opcao == "3":
-        print("Concluir tarefa")
+        concluir_tarefa()
 
     elif opcao == "4":
         print("Remover tarefa")
