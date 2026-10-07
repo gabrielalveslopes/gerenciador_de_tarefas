@@ -1,3 +1,6 @@
+from unicodedata import category
+
+
 tarefas = []
 
 
@@ -15,3 +18,8 @@ def criar_tarefa():
     tarefas.append(tarefa)
 
     print(f'Tarefa {titulo} criada com sucesso!')
+
+
+def listar_tarefas():
+    for item in tarefas:
+        print(f'{item["id"]} | {item["titulo"]} | Categoria: {item["categoria"]}')
