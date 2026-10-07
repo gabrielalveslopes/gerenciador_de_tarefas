@@ -1,3 +1,5 @@
+from tarefas import criar_tarefa
+
 def menu():
     print("\n=== DEV TASK CLI ===")
     print("1 - Criar tarefa")
@@ -13,7 +15,7 @@ while True:
     opcao = input("\nEscolha uma opção: ")
 
     if opcao == "1":
-        print("Criar tarefa")
+        criar_tarefa()
 
     elif opcao == "2":
         print("Listar tarefas")
