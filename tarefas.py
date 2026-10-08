@@ -1,4 +1,9 @@
 from unicodedata import category
+import json
+from pathlib import Path
+
+ARQUIVO = Path(__file__).with_name("tarefas.json")
+tarefas = []
 
 
 tarefas = []
@@ -21,6 +26,7 @@ def criar_tarefa():
     }
 
     tarefas.append(tarefa)
+    salvar_tarefas()
 
     print(f'Tarefa {titulo} criada com sucesso!')
 
@@ -41,6 +47,7 @@ def concluir_tarefa():
     for item in tarefas:
         if item["id"] == id_tarefa:
             item["concluida"] = True
+            salvar_tarefas()
             print("Tarefa concluída com sucesso!")
             return
 
@@ -52,7 +59,21 @@ def remover_tarefa():
     for item in tarefas:
         if item["id"] == id_tarefa:
             tarefas.remove(item)
+            salvar_tarefas()
             print("Tarefa removida com sucesso!")
             return
 
     print("Tarefa não encontrada!")
+
+
+def salvar_tarefas():
+    with open(ARQUIVO, "w", encoding="utf-8") as arquivo:
+        json.dump(tarefas, arquivo, indent=4, ensure_ascii=False)
+
+
+def carregar_tarefas():
+    global tarefas
+
+    if ARQUIVO.exists():
+        with open(ARQUIVO, "r", encoding="utf-8") as arquivo:
+            tarefas = json.load(arquivo)
