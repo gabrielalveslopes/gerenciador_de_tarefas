@@ -8,8 +8,13 @@ def criar_tarefa():
     titulo = input("Título da tarefa: ")
     categoria = input("Categoria: ")
 
+    if tarefas:
+        novo_id = max(item["id"] for item in tarefas) + 1
+    else:
+        novo_id = 1
+
     tarefa = {
-    "id": len(tarefas) + 1,
+    "id": novo_id,
     "titulo": titulo,
     "categoria": categoria,
     "concluida": False
@@ -37,7 +42,9 @@ def concluir_tarefa():
         if item["id"] == id_tarefa:
             item["concluida"] = True
             print("Tarefa concluída com sucesso!")
+            return
 
+    print("Tarefa não encontrada!")
 
 def remover_tarefa():
     id_tarefa = int(input("Digite o ID da tarefa que deseja remover: "))
