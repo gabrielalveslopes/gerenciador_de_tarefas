@@ -38,4 +38,14 @@ def concluir_tarefa():
             item["concluida"] = True
             print("Tarefa concluída com sucesso!")
 
-        
+
+def remover_tarefa():
+    id_tarefa = int(input("Digite o ID da tarefa que deseja remover: "))
+
+    for item in tarefas:
+        if item["id"] == id_tarefa:
+            tarefas.remove(item)
+            print("Tarefa removida com sucesso!")
+            return
+
+    print("Tarefa não encontrada!")
